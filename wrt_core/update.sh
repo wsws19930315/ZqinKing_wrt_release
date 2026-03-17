@@ -33,6 +33,8 @@ source "$SCRIPT_DIR/modules/general.sh"
 source "$SCRIPT_DIR/modules/feeds.sh"
 source "$SCRIPT_DIR/modules/packages.sh"
 source "$SCRIPT_DIR/modules/system.sh"
+source "$SCRIPT_DIR/modules/cups.sh"
+
 
 main() {
     clone_repo
@@ -47,6 +49,8 @@ main() {
     update_golang
     change_dnsmasq2full
     fix_mk_def_depends
+
+    install_libubox_cmake_patch
     update_default_lan_addr
     remove_something_nss_kmod
     update_affinity_script
@@ -68,12 +72,12 @@ main() {
     fix_quickstart
     update_oaf_deconfig
     add_timecontrol
-    add_gecoosac
     add_quickfile
     update_lucky
     fix_rust_compile_error
     update_smartdns
     update_diskman
+    update_dockerman
     set_nginx_default_config
     update_uwsgi_limit_as
     update_argon
@@ -84,6 +88,7 @@ main() {
     remove_attendedsysupgrade
     fix_kconfig_recursive_dependency
     install_feeds
+    fix_cups_libcups_avahi_depends
     fix_easytier_lua
     update_adguardhome
     update_script_priority
@@ -92,6 +97,7 @@ main() {
     fix_opkg_check
     fix_quectel_cm
     install_pbr_cmcc
+    fix_pbr_ip_forward
     update_package "runc" "releases" "v1.3.3"
     update_package "containerd" "releases" "v1.7.28"
     update_package "docker" "tags" "v28.5.2"
